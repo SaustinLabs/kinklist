@@ -694,33 +694,51 @@
 * Choking
 ? A situation in which one character will control another character's breath with extreme force, and typically for extended and/or dangerous periods of time.
 
-#Meta
+#Communication Style
 (Self, Partner)
-* First Person
-* Third Person
-* Short Post Length (~1-3 sentences)
-* Medium Post Length (~3-7 sentences)
-* Long Post Length (~2-4 paragraphs)
-* Story (3+ paragraphs)
-* Dynamic Post Length
+* Voice Calls
+* Video Calls
+* Text Only
+* One-Word Responses
+* Short Messages (1-3 sentences)
+* Medium Messages (3-7 sentences)
+* Long Messages (1-3 paragraphs)
+* Very Long Messages (3+ paragraphs)
+* Dynamic Length (varies by mood/scene)
+* First Person POV
+* Third Person POV
+* Asterisk Actions (*does this*)
+* Quotation Dialogue
+* Literate/Detailed Writing
+* Casual/Relaxed Writing
 
-#Medium
+#Platform
 (General)
+* Discord
+* Telegram
+* Twitter/X
+* VRChat
+* E-Mail
 * Skype
 * Kik
-* Reddit
-* E-Mail
-* Discord
+* Snapchat
+* WhatsApp
+* Instagram DMs
 * Other
 
-#Time-Scale
+#Availability & Response Time
 (Self, Partner)
-* Short-Term Scenes
-* Medium-Term Scenes
-* Long-Term Scenes
+* Available for Voice/Video Calls
+* Text-Based Sessions Only
+* Short Sessions (under 1 hour)
+* Medium Sessions (1-3 hours)
+* Long Sessions (3+ hours)
+* Marathon Sessions (all day/night)
 * Quick Replies (0~10 mins)
 * Fast Replies (10~30 mins)
-* Normal Replies (30min ~ 2hours)
+* Normal Replies (30min ~ 2 hours)
 * Slow Replies (2~8 hours)
-* Glacial Replies (8-24 hours)
-* Occasional Replies (24+ hours)
+* Very Slow Replies (8-24 hours)
+* Casual Replies (24+ hours)
+* Prefers Scheduled Sessions
+* Prefers Spontaneous Sessions
