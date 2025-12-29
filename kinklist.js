@@ -1,5 +1,11 @@
-// Kinklist - Version 2.0 - Direct Download (No Imgur)
-// Last updated: 2025-12-28
+// Kinklist - Version 3.0 - Conditional Categories Feature
+// Last updated: 2025-12-29
+
+// Configuration for conditional categories
+var conditionalCategories = {
+    'Watersports / Scat': { trigger: 'Watersports', triggerCategory: 'Fluids' },
+    'General Surrealism': { trigger: 'Surrealism', triggerCategory: 'General' }
+};
 
 var log = function(val, base) {
     return Math.log(val) / Math.log(base);
@@ -146,6 +152,41 @@ $(function(){
                 inputKinks.$columns[colIndex].append($categories[i]);
             }
         },
+        isConditionalCategory: function(catName){
+            return conditionalCategories.hasOwnProperty(catName);
+        },
+        shouldShowConditionalCategory: function(catName){
+            if(!inputKinks.isConditionalCategory(catName)) return true;
+            
+            var config = conditionalCategories[catName];
+            var triggerSelector = '.cat-' + strToClass(config.triggerCategory) + 
+                                 ' .kink-' + strToClass(config.trigger) + 
+                                 ' .choice.selected';
+            var $selected = $(triggerSelector);
+            
+            // Show if: trigger exists and is NOT "Limit" (red/index 5)
+            if($selected.length > 0) {
+                var levelInt = $selected.data('levelInt');
+                return levelInt !== 5; // Not "Limit"
+            }
+            
+            // If trigger not found or not selected, hide by default
+            return false;
+        },
+        updateConditionalVisibility: function(){
+            var kinkCats = Object.keys(kinks);
+            for(var i = 0; i < kinkCats.length; i++) {
+                var catName = kinkCats[i];
+                if(inputKinks.isConditionalCategory(catName)) {
+                    var $cat = $('.cat-' + strToClass(catName));
+                    if(inputKinks.shouldShowConditionalCategory(catName)) {
+                        $cat.show();
+                    } else {
+                        $cat.hide();
+                    }
+                }
+            }
+        },
         fillInputList: function(){
             $('#InputList').empty();
             inputKinks.createColumns();
@@ -170,8 +211,12 @@ $(function(){
 
             // Make things update hash - use event delegation to avoid memory leaks
             $('#InputList').off('click', 'button.choice').on('click', 'button.choice', function(){
+                inputKinks.updateConditionalVisibility();
                 location.hash = inputKinks.updateHash();
             });
+            
+            // Initial visibility check for conditional categories
+            inputKinks.updateConditionalVisibility();
         },
         init: function(){
             // Set up DOM
@@ -182,6 +227,17 @@ $(function(){
 
             // Make export button work
             $('#Export').on('click', inputKinks.export);
+            
+            // Handle show all categories checkbox
+            $('#ShowAllCategories').on('change', function(){
+                if($(this).is(':checked')) {
+                    // Show all categories regardless of triggers
+                    $('.kinkCategory').show();
+                } else {
+                    // Re-apply conditional visibility
+                    inputKinks.updateConditionalVisibility();
+                }
+            });
 
             // On resize, redo columns
             (function(){
