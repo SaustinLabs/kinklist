@@ -38,6 +38,8 @@ var conditionalCategories = {
     },
     'Vaginal': { trigger: 'Pussy', triggerCategory: 'Bodies' },
     // Body-part specific
+    'Breast Play': { trigger: 'Breasts', triggerCategory: 'Bodies' },
+    'Foreskin Play': { trigger: 'Uncut Cocks', triggerCategory: 'Bodies' },
     'Foot Worship': { trigger: 'Feet', triggerCategory: 'Bodies' }
 };
 
