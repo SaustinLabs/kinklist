@@ -50,17 +50,6 @@ var level = {};
 
 
 $(function(){
-
-    // Load the unified kinklist file
-    $.get('kinklist.txt', function(data) {
-        $('#Kinks').text(data);
-        var kinksText = $('#Kinks').val();
-        kinks = inputKinks.parseKinksText(kinksText);
-        inputKinks.fillInputList();
-        inputKinks.parseHash();
-    }, 'text').error(function(){
-        alert('Failed to load kinklist.txt');
-    }); 
     
     inputKinks = {
         $columns: [],
@@ -609,7 +598,6 @@ $(function(){
                 }
             }
             
-            var listType = $('#listType').val();
             return inputKinks.encode(Object.keys(colors).length, hashValues);
         },
         parseHash: function(){
@@ -801,26 +789,13 @@ $(function(){
         level[text] = cssClass;
     });
 
-    // Check if there's a hash with a list type specified
-    var hash = location.hash.substring(1);
-    if(hash.length >= 10) {
-        var parts = hash.split('.');
-        if(parts.length >= 2) {
-            var listType = parts[0];
-            if(['classic', 'detailed', 'plsno'].indexOf(listType) >= 0) {
-                $('#listType').val(listType);
-            }
-        }
-    }
-
-    // Load the selected list type
-    var fileToRead = $('#listType').val() + '.txt';
-    $.get(fileToRead, function(data) {
+    // Load the unified kinklist file
+    $.get('kinklist.txt', function(data) {
         $('#Kinks').text(data);
         kinks = inputKinks.parseKinksText($('#Kinks').val());
         inputKinks.init();
     }, 'text').fail(function(){
-        alert('Failed to load initial list file: ' + fileToRead + '\n\nPlease make sure the file exists.');
+        alert('Failed to load kinklist.txt\n\nPlease make sure the file exists.');
     });
 
     (function(){
